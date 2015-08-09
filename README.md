@@ -12,15 +12,7 @@
 ##### [Quick Example](#quick-example)    
 ##### [Installation](#installation-1)   
 ##### [Examples](#examples-1)
-  * [Simple Table](#simple-table)    
-  * [XML Table](#xml-table)    
-  * [XML Table JSON Array](#xml-table-json-array)   
-
-##### [Command Library](#commands-1)
-  * [fill](#fill)    
-  * [make](#make)  
-  * [new](#new)      
-
+##### [Command Library](#commands-1)  
 ##### [Database Notes](#database-notes-1)   
 
 ## Quick Example
@@ -229,7 +221,10 @@ You will need to create a .env file and fill in the appropriate information.  Yo
 ###### Config File     
 One more step, then you're ready to go.  Open up config.php and make sure that 'database' is set to the database of your choice.  Currently, only mysql is supported out of the box.
 
-## Examples      
+## Examples    
+  * [Simple Table](#simple-table)    
+  * [XML Table](#xml-table)    
+  * [XML Table JSON Array](#xml-table-json-array)   
 
 #### Simple Table    
 Let's fill up a simple database.  
@@ -678,6 +673,9 @@ Our parsing function will look like this:
 Rather than convert the array returned from xmlToArrays into an array that can be fed to our Mysql statement, we will instead json encode it.  When you get the database value on the other end, you can simply use json_decode to get back the original structure of the array.  Its not for every situation, but in some cases its the best solution.
 
 ## Command Library    
+  * [fill](#fill)    
+  * [make](#make)  
+  * [new](#new)     
 
 ### fill  
 
