@@ -1,0 +1,39 @@
+<?xml version="1.0" ?>
+<dataset>
+    <table name="simple_table">
+        <column>id</column>
+        <column>name</column>
+        <column>email</column>
+        <column>address</column>
+        <row>
+            <value>1</value>
+            <value>Bob Smith</value>
+            <value>bob@example.com</value>
+            <value>3974 South Belvie St.</value>
+        </row>
+            <row>
+            <value>2</value>
+            <value>Jean Samson</value>
+            <value>jean@example.com</value>
+            <value>456 North Main</value>
+        </row>
+            <row>
+            <value>3</value>
+            <value>George Higgins</value>
+            <value>george@example.com</value>
+            <value>9844 East South Ave.</value>
+        </row>
+            <row>
+            <value>4</value>
+            <value>Mike Victors</value>
+            <value>mike@example.com</value>
+            <value>987 Cheese Street</value>
+        </row>
+            <row>
+            <value>5</value>
+            <value>Betty Lou Victors</value>
+            <value>betty@example.com</value>
+            <value>987 North Colorado Bvd.</value>
+        </row>
+    </table>
+</dataset>

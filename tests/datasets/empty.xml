@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+<dataset>
+    <table name="simple_table">
+        <column>id</column>
+        <column>name</column>
+        <column>email</column>
+        <column>address</column>
+    </table>
+    <table name="books_array">
+        <column>id</column>
+        <column>book_id</column>
+        <column>info</column>
+    </table>
+    <table name="books_columns">
+        <column>id</column>
+        <column>author</column>
+        <column>title</column>
+        <column>genre</column>
+        <column>price</column>
+        <column>publish_date</column>
+        <column>description</column>
+    </table>
+</dataset>

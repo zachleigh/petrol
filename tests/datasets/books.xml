@@ -1,0 +1,185 @@
+<?xml version="1.0" ?>
+<dataset>
+    <table name="books_array">
+        <column>id</column>
+        <column>book_id</column>
+        <column>info</column>
+        <row>
+            <value>1</value>
+            <value>bk101</value>
+            <value>{"@attributes":{"id":"bk101"},"author":"Gambardella, Matthew","title":"XML Developer's Guide","genre":"Computer","price":"44.95","publish_date":"2000-10-01","description":"An in-depth look at creating applicationswith XML."}</value>
+        </row>
+        <row>
+            <value>2</value>
+            <value>bk102</value>
+            <value>{"@attributes":{"id":"bk102"},"author":"Ralls, Kim","title":"Midnight Rain","genre":"Fantasy","price":"5.95","publish_date":"2000-12-16","description":"A former architect battles corporate zombies,an evil sorceress, and her own childhood to become queenof the world."}</value>
+        </row>
+        <row>
+            <value>3</value>
+            <value>bk103</value>
+            <value>{"@attributes":{"id":"bk103"},"author":"Corets, Eva","title":"Maeve Ascendant","genre":"Fantasy","price":"5.95","publish_date":"2000-11-17","description":"After the collapse of a nanotechnologysociety in England, the young survivors lay thefoundation for a new society."}</value>
+        </row>
+        <row>
+            <value>4</value>
+            <value>bk104</value>
+            <value>{"@attributes":{"id":"bk104"},"author":"Corets, Eva","title":"Oberon's Legacy","genre":"Fantasy","price":"5.95","publish_date":"2001-03-10","description":"In post-apocalypse England, the mysteriousagent known only as Oberon helps to create a new lifefor the inhabitants of London. Sequel to MaeveAscendant."}</value>
+        </row>
+        <row>
+            <value>5</value>
+            <value>bk105</value>
+            <value>{"@attributes":{"id":"bk105"},"author":"Corets, Eva","title":"The Sundered Grail","genre":"Fantasy","price":"5.95","publish_date":"2001-09-10","description":"The two daughters of Maeve, half-sisters,battle one another for control of England. Sequel toOberon's Legacy."}</value>
+        </row>
+        <row>
+            <value>6</value>
+            <value>bk106</value>
+            <value>{"@attributes":{"id":"bk106"},"author":"Randall, Cynthia","title":"Lover Birds","genre":"Romance","price":"4.95","publish_date":"2000-09-02","description":"When Carla meets Paul at an ornithologyconference, tempers fly as feathers get ruffled."}</value>
+        </row>
+        <row>
+            <value>7</value>
+            <value>bk107</value>
+            <value>{"@attributes":{"id":"bk107"},"author":"Thurman, Paula","title":"Splish Splash","genre":"Romance","price":"4.95","publish_date":"2000-11-02","description":"A deep sea diver finds true love twentythousand leagues beneath the sea."}</value>
+        </row>
+        <row>
+            <value>8</value>
+            <value>bk108</value>
+            <value>{"@attributes":{"id":"bk108"},"author":"Knorr, Stefan","title":"Creepy Crawlies","genre":"Horror","price":"4.95","publish_date":"2000-12-06","description":"An anthology of horror stories about roaches,centipedes, scorpions  and other insects."}</value>
+        </row>
+        <row>
+            <value>9</value>
+            <value>bk109</value>
+            <value>{"@attributes":{"id":"bk109"},"author":"Kress, Peter","title":"Paradox Lost","genre":"Science Fiction","price":"6.95","publish_date":"2000-11-02","description":"After an inadvertant trip through a HeisenbergUncertainty Device, James Salway discovers the problemsof being quantum."}</value>
+        </row>
+        <row>
+            <value>10</value>
+            <value>bk110</value>
+            <value>{"@attributes":{"id":"bk110"},"author":"O'Brien, Tim","title":"Microsoft .NET: The Programming Bible","genre":"Computer","price":"36.95","publish_date":"2000-12-09","description":"Microsoft's .NET initiative is explored indetail in this deep programmer's reference."}</value>
+        </row>
+        <row>
+            <value>11</value>
+            <value>bk111</value>
+            <value>{"@attributes":{"id":"bk111"},"author":"O'Brien, Tim","title":"MSXML3: A Comprehensive Guide","genre":"Computer","price":"36.95","publish_date":"2000-12-01","description":"The Microsoft MSXML3 parser is covered indetail, with attention to XML DOM interfaces, XSLT processing,SAX and more."}</value>
+        </row>
+        <row>
+            <value>12</value>
+            <value>bk112</value>
+            <value>{"@attributes":{"id":"bk112"},"author":"Galos, Mike","title":"Visual Studio 7: A Comprehensive Guide","genre":"Computer","price":"49.95","publish_date":"2001-04-16","description":"Microsoft Visual Studio 7 is explored in depth,looking at how Visual Basic, Visual C++, C#, and ASP+ areintegrated into a comprehensive developmentenvironment."}</value>
+        </row>
+    </table>
+    <table name="books_columns">
+        <column>id</column>
+        <column>author</column>
+        <column>title</column>
+        <column>genre</column>
+        <column>price</column>
+        <column>publish_date</column>
+        <column>description</column>
+        <row>
+            <value>1</value>
+            <value>Gambardella, Matthew</value>
+            <value>XML Developer's Guide</value>
+            <value>Computer</value>
+            <value>44.95</value>
+            <value>2000-10-01</value>
+            <value>An in-depth look at creating applicationswith XML.</value>
+        </row>
+        <row>
+            <value>2</value>
+            <value>Ralls, Kim</value>
+            <value>Midnight Rain</value>
+            <value>Fantasy</value>
+            <value>5.95</value>
+            <value>2000-12-16</value>
+            <value>A former architect battles corporate zombies,an evil sorceress, and her own childhood to become queenof the world.</value>
+        </row>
+        <row>
+            <value>3</value>
+            <value>Corets, Eva</value>
+            <value>Maeve Ascendant</value>
+            <value>Fantasy</value>
+            <value>5.95</value>
+            <value>2000-11-17</value>
+            <value>After the collapse of a nanotechnologysociety in England, the young survivors lay thefoundation for a new society.</value>
+        </row>
+        <row>
+            <value>4</value>
+            <value>Corets, Eva</value>
+            <value>Oberon's Legacy</value>
+            <value>Fantasy</value>
+            <value>5.95</value>
+            <value>2001-03-10</value>
+            <value>In post-apocalypse England, the mysteriousagent known only as Oberon helps to create a new lifefor the inhabitants of London. Sequel to MaeveAscendant.</value>
+        </row>
+        <row>
+            <value>5</value>
+            <value>Corets, Eva</value>
+            <value>The Sundered Grail</value>
+            <value>Fantasy</value>
+            <value>5.95</value>
+            <value>2001-09-10</value>
+            <value>The two daughters of Maeve, half-sisters,battle one another for control of England. Sequel toOberon's Legacy.</value>
+        </row>
+        <row>
+            <value>6</value>
+            <value>Randall, Cynthia</value>
+            <value>Lover Birds</value>
+            <value>Romance</value>
+            <value>4.95</value>
+            <value>2000-09-02</value>
+            <value>When Carla meets Paul at an ornithologyconference, tempers fly as feathers get ruffled.</value>
+        </row>
+        <row>
+            <value>7</value>
+            <value>Thurman, Paula</value>
+            <value>Splish Splash</value>
+            <value>Romance</value>
+            <value>4.95</value>
+            <value>2000-11-02</value>
+            <value>A deep sea diver finds true love twentythousand leagues beneath the sea.</value>
+        </row>
+        <row>
+            <value>8</value>
+            <value>Knorr, Stefan</value>
+            <value>Creepy Crawlies</value>
+            <value>Horror</value>
+            <value>4.95</value>
+            <value>2000-12-06</value>
+            <value>An anthology of horror stories about roaches,centipedes, scorpions  and other insects.</value>
+        </row>
+        <row>
+            <value>9</value>
+            <value>Kress, Peter</value>
+            <value>Paradox Lost</value>
+            <value>Science Fiction</value>
+            <value>6.95</value>
+            <value>2000-11-02</value>
+            <value>After an inadvertant trip through a HeisenbergUncertainty Device, James Salway discovers the problemsof being quantum.</value>
+        </row>
+        <row>
+            <value>10</value>
+            <value>O'Brien, Tim</value>
+            <value>Microsoft .NET: The Programming Bible</value>
+            <value>Computer</value>
+            <value>36.95</value>
+            <value>2000-12-09</value>
+            <value>Microsoft's .NET initiative is explored indetail in this deep programmer's reference.</value>
+        </row>
+        <row>
+            <value>11</value>
+            <value>O'Brien, Tim</value>
+            <value>MSXML3: A Comprehensive Guide</value>
+            <value>Computer</value>
+            <value>36.95</value>
+            <value>2000-12-01</value>
+            <value>The Microsoft MSXML3 parser is covered indetail, with attention to XML DOM interfaces, XSLT processing,SAX and more.</value>
+        </row>
+        <row>
+            <value>12</value>
+            <value>Galos, Mike</value>
+            <value>Visual Studio 7: A Comprehensive Guide</value>
+            <value>Computer</value>
+            <value>49.95</value>
+            <value>2001-04-16</value>
+            <value>Microsoft Visual Studio 7 is explored in depth,looking at how Visual Basic, Visual C++, C#, and ASP+ areintegrated into a comprehensive developmentenvironment.</value>
+        </row>
+    </table>
+</dataset>

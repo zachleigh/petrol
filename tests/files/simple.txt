@@ -1,0 +1,5 @@
+Bob Smith / bob@example.com / 3974 South Belvie St.
+Jean Samson / jean@example.com / 456 North Main
+George Higgins / george@example.com / 9844 East South Ave.
+Mike Victors / mike@example.com / 987 Cheese Street
+Betty Lou Victors / betty@example.com / 987 North Colorado Bvd.

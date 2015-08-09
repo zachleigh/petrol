@@ -1,0 +1,22 @@
+#! /usr/bin/env php
+
+<?php
+
+use Petrol\Core\Commands\FillCommand\ConsoleFill;
+use Petrol\Core\Commands\MakeCommand\ConsoleMake;
+use Petrol\Core\Commands\NewCommand\ConsoleNew;
+use Symfony\Component\Console\Application;
+
+require 'vendor/autoload.php';
+
+if (file_exists('.env')) {
+    Dotenv::load(__DIR__);
+}
+
+$app = new Application('Petrol', '0.9');
+
+$app->add(new ConsoleFill());
+$app->add(new ConsoleMake());
+$app->add(new ConsoleNew());
+
+$app->run();

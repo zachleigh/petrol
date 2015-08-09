@@ -1,0 +1,4 @@
+DB_HOST=DummyHost
+DB_DATABASE=DummyDatabase
+DB_USERNAME=DummyUsername
+DB_PASSWORD=DummyPassword
