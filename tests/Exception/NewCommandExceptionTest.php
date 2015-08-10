@@ -6,6 +6,7 @@ use Petrol\Core\Commands\NewCommand\ConsoleNew;
 use Petrol\Tests\TestCase;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Tester\CommandTester;
+use Symfony\Component\Filesystem\Filesystem;
 use org\bovigo\vfs\vfsStream;
 
 class NewCommandExceptionTest extends TestCase
@@ -22,7 +23,7 @@ class NewCommandExceptionTest extends TestCase
     public function setUp()
     {
         $this->app = new Application();
-        $this->app->add(new ConsoleNew());
+        $this->app->add(new ConsoleNew(new Filesystem()));
         $this->command = $this->app->find('new');
         $this->command_tester = new CommandTester($this->command);
 
@@ -58,7 +59,7 @@ class NewCommandExceptionTest extends TestCase
      *
      * @test
      * @expectedException Exception
-     * @expectedExceptionMessage Can not write to given path.
+     * @expectedExceptionMessage Can not write to Filler path.
      */
     public function invalid_path_returns_error()
     {

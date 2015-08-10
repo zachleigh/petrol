@@ -10,6 +10,7 @@ use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Input\ArgvInput;
 use Symfony\Component\Console\Output\ConsoleOutput;
 use Symfony\Component\Console\Tester\CommandTester;
+use Symfony\Component\Filesystem\Filesystem;
 
 class FillCommandTest extends DatabaseTestCase
 {
@@ -25,7 +26,7 @@ class FillCommandTest extends DatabaseTestCase
     public function setUp()
     {
         $this->app = new Application();
-        $this->app->add(new ConsoleFill());
+        $this->app->add(new ConsoleFill(new Filesystem()));
         $this->command = $this->app->find('fill');
         $this->command_tester = new CommandTester($this->command);
 

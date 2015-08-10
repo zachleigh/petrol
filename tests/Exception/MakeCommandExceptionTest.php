@@ -6,6 +6,7 @@ use Petrol\Core\Commands\MakeCommand\ConsoleMake;
 use Petrol\Tests\TestCase;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Tester\CommandTester;
+use Symfony\Component\Filesystem\Filesystem;
 
 class MakeCommandExceptionTest extends TestCase
 {
@@ -21,7 +22,7 @@ class MakeCommandExceptionTest extends TestCase
     public function setUp()
     {
         $this->app = new Application();
-        $this->app->add(new ConsoleMake());
+        $this->app->add(new ConsoleMake(new Filesystem()));
         $this->command = $this->app->find('make');
         $this->command_tester = new CommandTester($this->command);
     }

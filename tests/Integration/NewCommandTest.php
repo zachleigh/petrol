@@ -4,6 +4,7 @@ use Petrol\Core\Commands\NewCommand\ConsoleNew;
 use Petrol\Tests\TestCase;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Tester\CommandTester;
+use Symfony\Component\Filesystem\Filesystem;
 use org\bovigo\vfs\vfsStream;
 
 class NewCommandTest extends TestCase
@@ -24,12 +25,12 @@ class NewCommandTest extends TestCase
     public function setUp()
     {
         $this->app = new Application();
-        $this->app->add(new ConsoleNew());
+        $this->app->add(new ConsoleNew(new Filesystem()));
         $this->command = $this->app->find('new');
         $this->command_tester = new CommandTester($this->command);
 
         vfsStream::setup();
-        $this->root = vfsStream::url('root');
+        $this->root = vfsStream::url('root/');
         $this->path = vfsStream::url('root/FillTest.php');
     }
 

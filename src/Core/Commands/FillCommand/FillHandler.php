@@ -59,13 +59,13 @@ class FillHandler
      */
     private function buildFillerClass($data)
     {
-        $this->validateClassName($data->file_path);
+        $this->validateClassName($data->file_namespace);
 
         $connection_factory = new ConnectionFactory($data->config_path);
 
         $connection = $connection_factory->build($this->output, $data->errors);
 
-        return new $data->file_path($connection);
+        return new $data->file_namespace($connection);
     }
 
     /**

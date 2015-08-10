@@ -7,9 +7,24 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Filesystem\Filesystem;
 
 class ConsoleFill extends Command
 {
+    private $filesystem;
+
+    /**
+     * Construct.
+     *
+     * @param Filesystem $filesystem [description]
+     */
+    public function __construct(Filesystem $filesystem)
+    {
+        parent::__construct();
+
+        $this->filesystem = $filesystem;
+    }
+
     /**
      * Configure command.
      */
@@ -32,7 +47,7 @@ class ConsoleFill extends Command
     {
         $name = $input->getArgument('name');
 
-        $file_path = 'Petrol\\Fillers\\Fill'.makeClassName($name);
+        $file_namespace = 'Petrol\\Fillers\\Fill'.makeClassName($name);
 
         $errors = $input->getOption('errors');
 
@@ -44,7 +59,7 @@ class ConsoleFill extends Command
             $source = 'console';
         }
 
-        $data = new FillData($file_path, $errors, $config_path, $source);
+        $data = new FillData($file_namespace, $errors, $config_path, $source);
 
         $handler = new FillHandler($input, $output);
 

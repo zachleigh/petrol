@@ -30,7 +30,7 @@ class MakeHandler
      */
     public function handle(MakeData $data)
     {
-        $class = $this->makeClassFactory($data->item);
+        $class = $this->makeClassFactory($data);
 
         $class->execute($this->input, $this->output);
     }
@@ -38,18 +38,20 @@ class MakeHandler
     /**
      * Factory for make command classes.
      *
-     * @param string $item
+     * @param MakeData $dat
      *
      * @return Class
      */
-    private function makeClassFactory($item)
+    private function makeClassFactory(MakeData $data)
     {
-        $class_name = 'Make'.ucfirst($item);
+        $class_name = 'Make'.ucfirst($data->item);
 
-        $class = 'Petrol\\Core\\Commands\\MakeCommand\\'.$class_name;
+        $class = $data->namespace.'\\Core\\Commands\\MakeCommand\\'.$class_name;
+
+        var_dump($class);
 
         if (!class_exists($class)) {
-            throw new \Exception('Argument '.$item.' does not exist.');
+            throw new \Exception('Argument '.$data->item.' does not exist.');
         }
 
         return new $class();

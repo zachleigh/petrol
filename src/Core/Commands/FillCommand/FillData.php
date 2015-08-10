@@ -5,11 +5,11 @@ namespace Petrol\Core\Commands\FillCommand;
 class FillData
 {
     /**
-     * The path to the database filler file.
+     * Namespace of the database filler file.
      *
      * @var string
      */
-    public $file_path;
+    public $file_namespace;
 
     /**
      * If true, database PDO errors will be shown.
@@ -35,14 +35,14 @@ class FillData
     /**
      * Construct.
      *
-     * @param string $file_path
+     * @param string $file_namespace
      * @param bool   $errors
      * @param string $config_path
      * @param string $source
      */
-    public function __construct($file_path, $errors, $config_path, $source)
+    public function __construct($file_namespace, $errors, $config_path, $source)
     {
-        $this->file_path = $file_path;
+        $this->file_namespace = $file_namespace;
         $this->errors = $errors;
         $this->config_path = $config_path;
         $this->source = $source;

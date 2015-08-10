@@ -2,13 +2,31 @@
 
 namespace Petrol\Core\Commands\MakeCommand;
 
+use Petrol\Core\Commands\CommandTrait;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Filesystem\Filesystem;
 
 class ConsoleMake extends Command
 {
+    use CommandTrait;
+
+    private $filesystem;
+
+    /**
+     * Construct
+     * 
+     * @param Filesystem $filesystem [description]
+     */
+    public function __construct(Filesystem $filesystem)
+    {
+        parent::__construct();
+        
+        $this->filesystem = $filesystem;
+    }
+
     /**
      * Configure command.
      */
@@ -29,7 +47,11 @@ class ConsoleMake extends Command
     {
         $item = $input->getArgument('item');
 
-        $data = new MakeData($item);
+        $namespace = 'Petrol';
+
+        $petrol_path = $this->findPetrolPath();
+
+        $data = new MakeData($item, $namespace, $petrol_path);
 
         $handler = new MakeHandler($input, $output);
 

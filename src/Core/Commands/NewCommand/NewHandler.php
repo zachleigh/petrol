@@ -4,6 +4,7 @@ namespace Petrol\Core\Commands\NewCommand;
 
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Filesystem\Filesystem;
 
 class NewHandler
 {
@@ -11,16 +12,19 @@ class NewHandler
 
     private $output;
 
+    private $filesystem;
+
     /**
      * Construct.
      *
      * @param InputInterface  $input
      * @param OutputInterface $output
      */
-    public function __construct(InputInterface $input, OutputInterface $output)
+    public function __construct(InputInterface $input, OutputInterface $output, Filesystem $filesystem)
     {
         $this->input = $input;
         $this->output = $output;
+        $this->filesystem = $filesystem;
     }
 
     /**
@@ -34,9 +38,9 @@ class NewHandler
 
         $this->validateClassName($class_name, $data);
 
-        $this->validatePath($data->petrol_path);
+        $this->validatePath($data->filler_path);
 
-        $class_path = $data->petrol_path.'/'.$class_name.'.php';
+        $class_path = $data->filler_path.'/'.$class_name.'.php';
 
         $filler = $this->makeFiller($data, $class_name);
 
@@ -57,7 +61,7 @@ class NewHandler
      */
     private function makeFiller(NewData $data, $class_name)
     {
-        $stub_path = getcwd().'/src/Core/Stubs/FillerStub.php';
+        $stub_path = $data->petrol_path.'/src/Core/Stubs/FillerStub.php';
 
         $stub_data = file_get_contents($stub_path);
 
@@ -150,7 +154,7 @@ class NewHandler
      */
     private function validateClassName($class_name, NewData $data)
     {
-        if (class_exists($data->namespace.'\\Fillers\\'.$class_name) || file_exists($data->petrol_path.'/'.$class_name.'.php')) {
+        if (class_exists($data->namespace.'\\Fillers\\'.$class_name) || $this->filesystem->exists($data->filler_path.'/'.$class_name.'.php')) {
             throw new \Exception('Filler for '.$data->name.' already exists.');
         }
     }
@@ -163,7 +167,7 @@ class NewHandler
     private function validatePath($path)
     {
         if (!is_writable($path)) {
-            throw new \Exception('Can not write to given path.');
+            throw new \Exception('Can not write to Filler path.');
         }
     }
 
