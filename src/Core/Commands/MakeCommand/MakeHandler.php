@@ -32,7 +32,7 @@ class MakeHandler
     {
         $class = $this->makeClassFactory($data->item);
 
-        $class->execute($input, $output);
+        $class->execute($this->input, $this->output);
     }
 
     /**
@@ -46,7 +46,7 @@ class MakeHandler
     {
         $class_name = 'Make'.ucfirst($item);
 
-        $class = 'Petrol\\Core\\Commands\\Make\\'.$class_name;
+        $class = 'Petrol\\Core\\Commands\\MakeCommand\\'.$class_name;
 
         if (!class_exists($class)) {
             throw new \Exception('Argument '.$item.' does not exist.');
