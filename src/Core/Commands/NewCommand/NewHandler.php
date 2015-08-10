@@ -81,7 +81,7 @@ class NewHandler
      */
     private function setClassAttributes($stub_data, $data, $class_name)
     {
-        $stub_data = $this->setNamespace($stub_data);
+        $stub_data = $this->setNamespace($stub_data, $data->namespace);
 
         $stub_data = $this->setTableName($stub_data, $data->name);
 
@@ -128,9 +128,9 @@ class NewHandler
      *
      * @return string
      */
-    private function setNamespace($stub_data)
+    private function setNamespace($stub_data, $namespace)
     {
-        return str_replace('DummyNamespace', 'Petrol\\Fillers', $stub_data);
+        return str_replace('DummyNamespace', $namespace.'\\Fillers', $stub_data);
     }
 
     /**

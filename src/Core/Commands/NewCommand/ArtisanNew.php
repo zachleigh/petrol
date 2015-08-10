@@ -7,9 +7,12 @@ use Petrol\Core\Commands\NewCommand\NewData;
 use Symfony\Component\Console\Input\ArgvInput;
 use Symfony\Component\Console\Output\ConsoleOutput;
 use Symfony\Component\Filesystem\Filesystem;
+use Illuminate\Console\AppNamespaceDetectorTrait;
 
 class ArtisanNew extends Command
 {
+    use AppNamespaceDetectorTrait;
+
     /**
      * The name and signature of the console command.
      *
@@ -44,17 +47,19 @@ class ArtisanNew extends Command
     {
         $name = $this->argument('name');
 
-        $filler_path = getcwd().'/database/Petrol/Fillers/';
+        $filler_path = getcwd().'/app/Petrol/Fillers/';
 
         $file = $this->option('file');
 
-        $namespace = 'Petrol';
+        $root_namespace = $this->getAppNamespace();
+
+        $namespace = $root_namespace.'Petrol';
 
         $petrol_path = getcwd().'/vendor/zachleigh/petrol/';
 
         $data = new NewData($name, $filler_path, $file, $namespace, $petrol_path);
         
-        $handler = new NewHandler(new ArgvInput(), new ConsoleOutput());
+        $handler = new NewHandler(new ArgvInput(), new ConsoleOutput(), $this->filesystem);
 
         $handler->handle($data);
     }
