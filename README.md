@@ -9,13 +9,16 @@
 
 ### Contents    
 
-##### [Quick Example](#quick-example)    
+##### [Quick Example](#quick-example)   
+  * [Standard Version](#standard-example)
+  * [Laravel Version](#laravel-example)   
 ##### [Installation](#installation-1)   
 ##### [Examples](#examples-1)
 ##### [Command Library](#commands-1)  
 ##### [Database Notes](#database-notes-1)   
 
 ## Quick Example
+#### Standard Example
 Let's parse a file and fill a Mysql table with **one line of code**.  
 
 Our file, **simple.txt**.  
@@ -40,7 +43,7 @@ Install Petrol.
 composer require zachleigh/petrol
 ```
 
-Navigate to vendor/zachleigh/Petrol and make a .env file.  
+Navigate to vendor/zachleigh/Petrol in the console and make a .env file.  
 ```cmd
 ./petrol make env
 ```  
@@ -165,6 +168,175 @@ Enter your line parsing code in the parse method.
 Fill your table.
 ```cmd
 ./petrol fill simple_table
+```  
+
+Done.  Reward yourself with a drink of your choice. 
+(A more detailed version of this tutorial can be found [here](#simple-table).)
+
+#### Laravel Example
+Let's parse a file and fill a Mysql table with **one line of code** in a Laravel application.  
+
+Our file, **simple.txt**.  
+```xml
+Bob Smith / bob@example.com / 3974 South Belvie St.
+Jean Samson / jean@example.com / 456 North Main
+George Higgins / george@example.com / 9844 East South Ave.
+Mike Victors / mike@example.com / 987 Cheese Street
+Betty Lou Victors / betty@example.com / 987 North Colorado Bvd.
+```  
+We've got names, emails, and address, seperated by spaces and slashes.
+
+Our database table, **simple_table**.  
+
+| id       | name     | email    | address  |
+|:--------:|:--------:|:--------:|:--------:|  
+
+A column for each item in **simple.txt** plus an auto-incrementing id column.
+
+Install Petrol in your application. 
+```cmd
+composer require zachleigh/petrol
+```  
+
+Register the Petrol service provider in app/Providers/AppServiceProvider.php.
+```php
+public function register()
+{
+    if ($this->app->environment() == 'local') {
+        $this->app->register('Petrol\Core\Providers\PetrolServiceProvider');
+    }
+}
+```  
+
+Run `php artisan` and make sure the Petrol commands are listed.
+
+Make the Petrol directory in the app/ directory.
+```cmd
+php artisan vendor:publish
+```
+
+You now have a Petrol directory in /app with Files and Fillers directories in it.
+
+Move **simple.txt** into the Files directory.
+
+Make a new filler file.
+```cmd
+php artisan petrol:new simple_table --file=simple.txt
+```  
+
+Sweet.  We now have a FillSimpleTable file in app/Petrol/Fillers/.  
+
+Open it up.  
+```php
+namespace App\Petrol\Fillers;
+
+use Petrol\Core\Database\Connection;
+use Petrol\Core\Helpers\Traits\Parser;
+use Petrol\Core\Helpers\Traits\User;
+use Petrol\Core\Helpers\Traits\XmlParser;
+
+class FillSimpleTable extends Filler
+{
+    use Parser, User;
+
+    /**
+     * Database connection class.
+     *
+     * @var Petrol\Core\Database\Connection
+     */
+    protected $connection;
+
+    /**
+     * Database filling method. If 'auto', Petrol will automatically insert one row
+     * every line. If 'manual', insertRow($data) must be called on $this->connection
+     * to insert a row. 'dump' will dump results to console instead of filling db.
+     *
+     * @var string ['auto, 'manual', 'dump']
+     */
+    protected $fill = 'auto';
+
+    /**
+     * The file to be parsed by the Filler. File must be in Petrol/src/Files/.
+     *
+     * @var string
+     */
+    protected $file = 'simple.txt';
+
+    /**
+     * The database table to be filled. Table must be created before filling.
+     *
+     * @var string
+     */
+    protected $table = 'simple_table';
+
+    /**
+     * Database table columns excluding id.
+     *
+     * @var array
+     */
+    protected $columns = [
+        //
+    ];
+
+    /**
+     * Variables to be declared before loop begins. These variables will be stored
+     * on the object and can be accessed with $this->key.
+     *
+     * @var array
+     */
+    protected $variables = [
+        //
+    ];
+
+    /**
+     * Construct.
+     *
+     * @param Connection $connection
+     */
+    public function __construct(Connection $connection)
+    {
+        $this->connection = $connection;
+
+        parent::__construct();
+    }
+
+    /**
+     * Parse the file. Petrol will go through $file line by line and send each line
+     * to this parse method.
+     *
+     * @param string $line [individual lines from file]
+     *
+     * @return array $data  [array of columns => values for line]
+     */
+    protected function parse($line)
+    {
+        // parse file
+        //
+        // return array
+    }
+}
+```  
+
+Enter the database columns in the $columns array. (We don't need the id column.)
+```php
+    protected $columns = [
+        'name',
+        'email',
+        'address'
+    ];
+```  
+
+Enter your line parsing code in the parse method.
+```php
+    protected function parse($line)
+    {
+        return array_combine($this->columns, $this->cleanExplode('/', $line));
+    }
+```  
+
+Fill your table.
+```cmd
+php artisan petrol:fill simple_table
 ```  
 
 Done.  Reward yourself with a drink of your choice. 

@@ -32,6 +32,9 @@ class PetrolServiceProvider extends ServiceProvider
         $this->registerNewCommand();
     }
 
+    /**
+     * Register the Petrol fill command with artisan.
+     */
     private function registerFillCommand()
     {
         $this->app->singleton('command.petrol.fill', function ($app) {
@@ -41,7 +44,9 @@ class PetrolServiceProvider extends ServiceProvider
         $this->commands('command.petrol.fill');
     }
 
-
+    /**
+     * Register the Petrol new command with artisan.
+     */
     private function registerNewCommand()
     {
         $this->app->singleton('command.petrol.new', function ($app) {

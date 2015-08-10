@@ -85,6 +85,6 @@ class DummyClass extends Filler
     {
         // parse file
         //
-        // return array;
+        // return array
     }
 }

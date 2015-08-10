@@ -39,7 +39,7 @@ class ArtisanNew extends Command
     }
 
     /**
-     * Execute the console command.
+     * Get data and pass to command handler.
      *
      * @return mixed
      */
