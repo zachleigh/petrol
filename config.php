@@ -5,7 +5,7 @@ return [
     | Define database type
     | Options: mysql
     */
-    'database' => 'mysql',
+    'default' => 'mysql',
 
     /*
     | Enter connection details for defined database type
@@ -16,7 +16,7 @@ return [
             'driver' => 'mysql',
             'charset' => 'utf8',
             'host' => getenv('DB_HOST'),
-            'database_name' => getenv('DB_DATABASE'),
+            'database' => getenv('DB_DATABASE'),
             'username' => getenv('DB_USERNAME'),
             'password' => getenv('DB_PASSWORD'),
         ],

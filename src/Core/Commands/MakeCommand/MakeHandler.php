@@ -48,8 +48,6 @@ class MakeHandler
 
         $class = $data->namespace.'\\Core\\Commands\\MakeCommand\\'.$class_name;
 
-        var_dump($class);
-
         if (!class_exists($class)) {
             throw new \Exception('Argument '.$data->item.' does not exist.');
         }

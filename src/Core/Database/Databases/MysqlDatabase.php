@@ -56,7 +56,7 @@ class MysqlDatabase implements DatabaseInterface
 
         $host = $mysql['host'];
 
-        $dbname = $mysql['database_name'];
+        $dbname = $mysql['database'];
 
         $username = $mysql['username'];
 
@@ -84,9 +84,7 @@ class MysqlDatabase implements DatabaseInterface
      */
     public function getInformationArray()
     {
-        $config = new Config();
-
-        $array = $config->get('connections')['mysql'];
+        $array = $this->config->get('connections')['mysql'];
 
         return $array;
     }

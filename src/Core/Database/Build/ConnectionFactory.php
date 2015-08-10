@@ -58,7 +58,7 @@ class ConnectionFactory
      */
     private function getDatabaseClassName()
     {
-        $database_type = $this->config->get('database');
+        $database_type = $this->config->get('default');
 
         if ($database_type === '4D') {
             $database_type = 'FourD';

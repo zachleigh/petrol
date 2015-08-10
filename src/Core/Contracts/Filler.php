@@ -1,6 +1,6 @@
 <?php
 
-namespace Petrol\Fillers;
+namespace Petrol\Core\Contracts;
 
 use Petrol\Core\Database\Connection;
 
@@ -66,7 +66,13 @@ abstract class Filler
      */
     protected function getFullFilePath()
     {
-        return getcwd().'/src/Files/'.$this->file;
+        if (file_exists(getcwd().'/src/Files/'.$this->file)) {
+            return getcwd().'/src/Files/'.$this->file;
+        } elseif (file_exists(getcwd().'/app/Petrol/Files/'.$this->file)) {
+            return getcwd().'/app/Petrol/Files/'.$this->file;
+        }
+
+        return false;
     }
 
     /**

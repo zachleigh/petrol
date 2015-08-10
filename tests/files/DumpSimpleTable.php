@@ -2,8 +2,8 @@
 
 namespace Petrol\Tests\files;
 
+use Petrol\Core\Contracts\Filler;
 use Petrol\Core\Database\Connection;
-use Petrol\Fillers\Filler;
 
 class DumpSimpleTable extends Filler
 {

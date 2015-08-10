@@ -74,11 +74,11 @@ class MysqlExceptionTest extends TestCase
      *
      * @test
      * @expectedException Exception
-     * @expectedExceptionMessage Please ensure database exists and $columns field is properly set.
+     * @expectedExceptionMessage Could not connect to database. Please check credentials in .env file.
      */
     public function wrong_config_info_throws_exception()
     {
-        $mysql = new MysqlDatabase(new Config('tests/files/wrong_config.php'), false);
+        $mysql = new MysqlDatabase(new Config('tests/files/wrong_info_config.php'), false);
 
         $handle = $mysql->getHandle();
 

@@ -2,11 +2,11 @@
 
 namespace Petrol\Tests\files;
 
+use Petrol\Core\Contracts\Filler;
 use Petrol\Core\Database\Connection;
 use Petrol\Core\Helpers\Traits\Parser;
 use Petrol\Core\Helpers\Traits\User;
 use Petrol\Core\Helpers\Traits\XmlParser;
-use Petrol\Fillers\Filler;
 
 class BooksColumns extends Filler
 {

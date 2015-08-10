@@ -2,9 +2,9 @@
 
 namespace Petrol\Tests\files;
 
+use Petrol\Core\Contracts\Filler;
 use Petrol\Core\Database\Connection;
 use Petrol\Core\Helpers\Traits\Parser;
-use Petrol\Fillers\Filler;
 
 class SimpleTableWithParser extends Filler
 {

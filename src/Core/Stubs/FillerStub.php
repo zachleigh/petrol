@@ -2,6 +2,7 @@
 
 namespace DummyNamespace;
 
+use Petrol\Contracts\Filler;
 use Petrol\Core\Database\Connection;
 use Petrol\Core\Helpers\Traits\Parser;
 use Petrol\Core\Helpers\Traits\User;
