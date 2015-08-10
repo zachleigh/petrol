@@ -11,7 +11,8 @@
 
 ##### [Quick Example](#quick-example)   
   * [Standard Version](#standard-example)
-  * [Laravel Version](#laravel-example)   
+  * [Laravel Version](#laravel-example)  
+ 
 ##### [Installation](#installation-1)   
 ##### [Examples](#examples-1)
 ##### [Command Library](#commands-1)  
