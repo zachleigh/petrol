@@ -7,10 +7,11 @@ use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\ArgvInput;
 use Symfony\Component\Console\Output\ConsoleOutput;
 use Illuminate\Console\AppNamespaceDetectorTrait;
+use Petrol\Core\Helpers\Traits\Helpers;
 
 class ArtisanFill extends Command
 {
-    use AppNamespaceDetectorTrait;
+    use AppNamespaceDetectorTrait, Helpers;
 
     /**
      * The name and signature of the console command.
@@ -47,7 +48,7 @@ class ArtisanFill extends Command
 
         $root_namespace = $this->getAppNamespace();
 
-        $file_namespace = $root_namespace.'Petrol\\Fillers\\Fill'.makeClassName($name);
+        $file_namespace = $root_namespace.'Petrol\\Fillers\\Fill'.$this->makeClassName($name);
 
         $errors = $this->option('errors');
 

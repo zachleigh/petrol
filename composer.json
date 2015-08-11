@@ -28,11 +28,7 @@
     "autoload": {
         "psr-4": {
             "Petrol\\": "src/"
-        }, 
-
-        "files": [
-            "src/Core/Helpers/helpers.php"
-        ]
+        }
     },
 
     "autoload-dev": {

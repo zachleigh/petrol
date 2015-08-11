@@ -8,9 +8,12 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Filesystem\Filesystem;
+use Petrol\Core\Helpers\Traits\Helpers;
 
 class ConsoleFill extends Command
 {
+    use Helpers;
+
     private $filesystem;
 
     /**
@@ -47,7 +50,7 @@ class ConsoleFill extends Command
     {
         $name = $input->getArgument('name');
 
-        $file_namespace = 'Petrol\\Fillers\\Fill'.makeClassName($name);
+        $file_namespace = 'Petrol\\Fillers\\Fill'.$this->makeClassName($name);
 
         $errors = $input->getOption('errors');
 

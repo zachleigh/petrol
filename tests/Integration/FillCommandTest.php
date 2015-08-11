@@ -2,6 +2,7 @@
 
 namespace Petrol\Tests\Core\Commands\FillCommand;
 
+use Petrol\Core\Commands\FillCommand\ArtisanFill;
 use Petrol\Core\Commands\FillCommand\ConsoleFill;
 use Petrol\Core\Commands\FillCommand\FillData;
 use Petrol\Core\Commands\FillCommand\FillHandler;
