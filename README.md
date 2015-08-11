@@ -815,8 +815,9 @@ In some situations, it is better to enter the XML data into a database as a JSON
 
 This very brief tutorial is similar to the previous tutorial, except our database table and our parsing function will be different.  
 Our database structure:  
-| id       | book_id  | info     |   
-|:--------:|:--------:|:--------:|
+
+| id       | book_id  | info     | 
+|:--------:|:--------:|:--------:|  
 
 So in our Filler file, our columns array will look like this:
 ```php

@@ -178,10 +178,8 @@ class NewHandler
      */
     private function validateWrite($class_path)
     {
-        if (file_exists($class_path)) {
-            return;
+        if (!file_exists($class_path)) {
+            throw new \Exception('Filler could not be created.');
         }
-
-        throw new \Exception('Filler could not be created.');
     }
 }

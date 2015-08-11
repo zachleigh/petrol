@@ -147,6 +147,8 @@ trait XmlParser
         } elseif ($this->containsEntity($string)) {
             $string = $this->replaceEntity($string);
         }
+
+        return $string;
     }
 
     /**
@@ -176,7 +178,7 @@ trait XmlParser
         }
 
         if ($this->convert_entities) {
-            $this->handleEntities($string);
+            $string = $this->handleEntities($string);
         }
 
         $string = html_entity_decode($string, ENT_QUOTES, 'utf-8');
@@ -244,11 +246,22 @@ trait XmlParser
      */
     private function containsEntity($string)
     {
-        if (preg_match('/&(^\S*$);/s', $string)) {
+        if (preg_match('/&[^\s]*;/s', $string)) {
             return true;
         }
 
         return false;
+    }
+
+    /**
+     * Converts entity &ent; to string ent.
+     * 
+     * @param  string $entity 
+     * @return string
+     */
+    private function entityToString($entity)
+    {
+        return str_replace('&', '', str_replace(';', '', $entity));
     }
 
     /**
@@ -387,12 +400,14 @@ trait XmlParser
      */
     private function replaceEntity($string)
     {
-        $pattern = '/&(.*?);/s';
+        $pattern = '/&[^\s]*;/s';
 
         preg_match($pattern, $string, $match);
 
-        if (!array_key_exists($match[1], $this->no_convert)) {
-            return preg_replace($pattern, $this->entities[$match[1]], $string);
+        $match = $this->entityToString($match[0]);
+
+        if (!array_key_exists($match, $this->no_convert)) {
+            return preg_replace($pattern, $this->entities[$match], $string);
         }
     }
 

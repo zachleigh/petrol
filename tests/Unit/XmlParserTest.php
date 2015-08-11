@@ -136,6 +136,18 @@ class XmlParserTest extends TestCase
 
     /**
      * containsEntity()
+     * 
+     * @test
+     */
+    public function contains_entity()
+    {
+        $result = $this->containsEntity('<tag>&n;</tag>');
+
+        $this->assertTrue($result);
+    }
+
+    /**
+     * containsEntity()
      *
      * @test
      */
