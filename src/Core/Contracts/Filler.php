@@ -41,6 +41,8 @@ abstract class Filler
                 print_r($data);
             }
         }
+
+        $this->closeFile($file_handle);
     }
 
     /**
@@ -57,6 +59,16 @@ abstract class Filler
         $this->validateTable();
 
         $this->validateVariables();
+    }
+
+    /**
+     * Close the file.
+     *
+     * @param  Resource $handle
+     */
+    protected function closeFile($handle)
+    {
+        fclose($handle);
     }
 
     /**
