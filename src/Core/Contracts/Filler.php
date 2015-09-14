@@ -6,12 +6,24 @@ use Petrol\Core\Database\Connection;
 
 abstract class Filler
 {
+    private $file_handle;
+
     /**
      * Construct.
      */
     public function __construct()
     {
         $this->connection->setStatement($this->columns, $this->table);
+    }
+
+    /**
+     * Close file handle if it exists.
+     */
+    public function __destruct()
+    {
+        if ($this->file_handle) {
+            $this->closeFile();
+        }
     }
 
     /**
@@ -28,11 +40,11 @@ abstract class Filler
      */
     public function execute()
     {
-        $file_handle = $this->loadFile();
+        $this->file_handle = $this->loadFile();
 
         $this->loadVariables();
 
-        while (($line = fgets($file_handle)) !== false) {
+        while (($line = fgets($this->file_handle)) !== false) {
             $data = $this->parse($line);
 
             if (is_array($data) && $this->fill === 'auto') {
@@ -42,7 +54,7 @@ abstract class Filler
             }
         }
 
-        $this->closeFile($file_handle);
+        $this->closeFile();
     }
 
     /**
@@ -66,9 +78,11 @@ abstract class Filler
      *
      * @param  Resource $handle
      */
-    protected function closeFile($handle)
+    protected function closeFile()
     {
-        fclose($handle);
+        fclose($this->file_handle);
+
+        $this->file_handle = null;
     }
 
     /**
@@ -104,9 +118,19 @@ abstract class Filler
     }
 
     /**
+     * Set statements in $statements to object properties.
+     */
+    private function loadStatements()
+    {
+        foreach ($this->statements as $key => $statement) {
+            $this->$key = $this->connection->prepareStatement($statement);
+        }
+    }
+
+    /**
      * Set variables in $variables to object properties.
      */
-    protected function loadVariables()
+    private function loadVariables()
     {
         foreach ($this->variables as $key => $value) {
             $this->$key = $value;

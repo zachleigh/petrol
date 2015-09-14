@@ -48,7 +48,7 @@ class DummyClass extends Filler
      * @var array
      */
     protected $columns = [
-        //
+        // 'column'
     ];
 
     /**
@@ -58,7 +58,17 @@ class DummyClass extends Filler
      * @var array
      */
     protected $variables = [
-        //
+        // 'key' => $variable
+    ];
+
+    /**
+     * PDO statements to be created on object. Statements will be stored on the
+     * object and can be accessed with $this->key.
+     * 
+     * @var array
+     */
+    protected $statements = [
+        // 'key' => 'SELECT * FROM table WHERE BINARY column = :column'
     ];
 
     /**
@@ -83,8 +93,10 @@ class DummyClass extends Filler
      */
     protected function parse($line)
     {
-        // parse file
+        // code to parse file, set values
         //
-        // return array
+        // return [
+        //    'column' => $value
+        // ];
     }
 }

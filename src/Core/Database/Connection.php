@@ -50,7 +50,7 @@ class Connection
      */
     public function getStatement()
     {
-        return $this->statement();
+        return $this->statement;
     }
 
     /**
@@ -72,5 +72,17 @@ class Connection
     public function setStatement($columns, $table)
     {
         $this->statement = $this->database->getStatement($this->handle, $columns, $table);
+    }
+
+    /**
+     * Prepare a statement on handle (the PDO object).
+     * 
+     * @param  string $statement 
+     * 
+     * @return PDOStatement
+     */
+    public function prepareStatement($statement)
+    {
+        return $this->handle->prepare($statement);
     }
 }
