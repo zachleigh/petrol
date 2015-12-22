@@ -1,6 +1,6 @@
 <?php
 
-namespace Petrol\Tests\files;
+namespace Petrol\tests\files;
 
 use Petrol\Core\Contracts\Filler;
 use Petrol\Core\Database\Connection;
@@ -45,7 +45,7 @@ class DumpSimpleTable extends Filler
     protected $columns = [
         'name',
         'email',
-        'address'
+        'address',
     ];
 
     /**
@@ -56,6 +56,16 @@ class DumpSimpleTable extends Filler
      */
     protected $variables = [
         //
+    ];
+
+    /**
+     * PDO statements to be created on object. Statements will be stored on the
+     * object and can be accessed with $this->key.
+     *
+     * @var array
+     */
+    protected $statements = [
+        // 'key' => 'SELECT * FROM table WHERE BINARY column = :column'
     ];
 
     /**

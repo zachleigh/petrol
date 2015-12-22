@@ -61,6 +61,16 @@ class BooksJsonArray extends Filler
     protected $variables = [
         //
     ];
+    
+    /**
+     * PDO statements to be created on object. Statements will be stored on the
+     * object and can be accessed with $this->key.
+     * 
+     * @var array
+     */
+    protected $statements = [
+        // 'key' => 'SELECT * FROM table WHERE BINARY column = :column'
+    ];
 
     /**
      * Construct.

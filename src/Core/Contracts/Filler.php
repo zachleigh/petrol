@@ -44,6 +44,8 @@ abstract class Filler
 
         $this->loadVariables();
 
+        $this->loadStatements();
+
         while (($line = fgets($this->file_handle)) !== false) {
             $data = $this->parse($line);
 
