@@ -346,7 +346,7 @@ Done.  Reward yourself with a drink of your choice.
 ## Installation     
 
 #### Requirements 
- * ###### PHP 5.4 or higher     
+ * ###### PHP 5.5 or higher     
 Linux users can find PHP releases in their distribution repositories.
 For other operating systems, visit the [php installation guide](http://php.net/manual/en/install.php) for instructions.
 
