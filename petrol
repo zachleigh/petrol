@@ -23,7 +23,7 @@ if (file_exists('.env')) {
 
 $filesystem = new Filesystem();
 
-$app = new Application('Petrol', '0.9.2');
+$app = new Application('Petrol', '0.9.3');
 
 $app->add(new ConsoleFill($filesystem));
 $app->add(new ConsoleMake($filesystem));
