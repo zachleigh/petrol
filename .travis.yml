@@ -6,8 +6,11 @@ php:
   - 7.3
 install: composer install
 
+services:
+  - mysql
+
 before_install:
-  - mysql -e "create database IF NOT EXISTS test;" -uroot
+  - mysql -e "CREATE DATABASE IF NOT EXISTS test;" -uroot
 
 env:
   - DB_HOST=localhost DB_DATABASE=test DB_USERNAME=travis DB_PASSWORD=
