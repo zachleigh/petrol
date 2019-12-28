@@ -1,64 +1,64 @@
-# Petrol  
+# Petrol
 ### Database Fuel
 
 ##### A framework for parsing files and filling databases.
 
 [![Build Status](https://travis-ci.org/zachleigh/petrol.svg?branch=master)](https://travis-ci.org/zachleigh/petrol)
-[![Latest Stable Version](https://poser.pugx.org/zachleigh/petrol/version.svg)](//packagist.org/packages/zachleigh/petrol) 
-[![License](https://poser.pugx.org/zachleigh/petrol/license.svg)](//packagist.org/packages/zachleigh/petrol)      
+[![Latest Stable Version](https://poser.pugx.org/zachleigh/petrol/version.svg)](//packagist.org/packages/zachleigh/petrol)
+[![License](https://poser.pugx.org/zachleigh/petrol/license.svg)](//packagist.org/packages/zachleigh/petrol)
 
-### Contents    
+### Contents
 
-##### [Quick Example](#quick-example)   
+##### [Quick Example](#quick-example)
   * [Standard Version](#standard-example)
-  * [Laravel Version](#laravel-example)  
- 
-##### [Installation](#installation-1)   
+  * [Laravel Version](#laravel-example)
+
+##### [Installation](#installation-1)
 ##### [Examples](#examples-1)
-##### [Command Library](#commands-1)  
-##### [Database Notes](#database-notes-1)   
+##### [Command Library](#commands-1)
+##### [Database Notes](#database-notes-1)
 
 ## Quick Example
 #### Standard Example
-Let's parse a file and fill a Mysql table with **one line of code**.  
+Let's parse a file and fill a Mysql table with **one line of code**.
 
-Our file, **simple.txt**.  
+Our file, **simple.txt**.
 ```xml
 Bob Smith / bob@example.com / 3974 South Belvie St.
 Jean Samson / jean@example.com / 456 North Main
 George Higgins / george@example.com / 9844 East South Ave.
 Mike Victors / mike@example.com / 987 Cheese Street
 Betty Lou Victors / betty@example.com / 987 North Colorado Bvd.
-```  
+```
 We've got names, emails, and address, seperated by spaces and slashes.
 
-Our database table, **simple_table**.  
+Our database table, **simple_table**.
 
 | id       | name     | email    | address  |
-|:--------:|:--------:|:--------:|:--------:|  
+|:--------:|:--------:|:--------:|:--------:|
 
 A column for each item in **simple.txt** plus an auto-incrementing id column.
 
-Install Petrol.  
+Install Petrol.
 ```cmd
 composer require zachleigh/petrol
 ```
 
-Navigate to vendor/zachleigh/Petrol in the console and make a .env file.  
+Navigate to vendor/zachleigh/Petrol in the console and make a .env file.
 ```cmd
 ./petrol make env
-```  
+```
 
-Move **simple.txt** into Petrol/src/Files/.  
+Move **simple.txt** into Petrol/src/Files/.
 
 Make a new filler file.
 ```cmd
 ./petrol new simple_table --file=simple.txt
-```  
+```
 
-Sweet.  We now have a FillSimpleTable file in Petrol/src/Fillers/.  
+Sweet.  We now have a FillSimpleTable file in Petrol/src/Fillers/.
 
-Open it up.  
+Open it up.
 ```php
 namespace Petrol\Fillers;
 
@@ -147,7 +147,7 @@ class FillSimpleTable extends Filler
         // return array;
     }
 }
-```  
+```
 
 Enter the database columns in the $columns array. (We don't need the id column.)
 ```php
@@ -156,7 +156,7 @@ Enter the database columns in the $columns array. (We don't need the id column.)
         'email',
         'address'
     ];
-```  
+```
 
 Enter your line parsing code in the parse method.
 ```php
@@ -164,40 +164,40 @@ Enter your line parsing code in the parse method.
     {
         return array_combine($this->columns, $this->cleanExplode('/', $line));
     }
-```  
+```
 
 Fill your table.
 ```cmd
 ./petrol fill simple_table
-```  
+```
 
-Done.  Reward yourself with a drink of your choice. 
+Done.  Reward yourself with a drink of your choice.
 (A more detailed version of this tutorial can be found [here](#simple-table).)
 
 #### Laravel Example
-Let's parse a file and fill a Mysql table with **one line of code** in a Laravel application.  
+Let's parse a file and fill a Mysql table with **one line of code** in a Laravel application.
 
-Our file, **simple.txt**.  
+Our file, **simple.txt**.
 ```xml
 Bob Smith / bob@example.com / 3974 South Belvie St.
 Jean Samson / jean@example.com / 456 North Main
 George Higgins / george@example.com / 9844 East South Ave.
 Mike Victors / mike@example.com / 987 Cheese Street
 Betty Lou Victors / betty@example.com / 987 North Colorado Bvd.
-```  
+```
 We've got names, emails, and address, seperated by spaces and slashes.
 
-Our database table, **simple_table**.  
+Our database table, **simple_table**.
 
 | id       | name     | email    | address  |
-|:--------:|:--------:|:--------:|:--------:|  
+|:--------:|:--------:|:--------:|:--------:|
 
 A column for each item in **simple.txt** plus an auto-incrementing id column.
 
-Install Petrol in your application. 
+Install Petrol in your application.
 ```cmd
 composer require zachleigh/petrol
-```  
+```
 
 Register the Petrol service provider in app/Providers/AppServiceProvider.php.
 ```php
@@ -207,7 +207,7 @@ public function register()
         $this->app->register('Petrol\Core\Providers\PetrolServiceProvider');
     }
 }
-```  
+```
 
 Run `php artisan` and make sure the Petrol commands are listed.
 
@@ -223,11 +223,11 @@ Move **simple.txt** into the Files directory.
 Make a new filler file.
 ```cmd
 php artisan petrol:new simple_table --file=simple.txt
-```  
+```
 
-Sweet.  We now have a FillSimpleTable file in app/Petrol/Fillers/.  
+Sweet.  We now have a FillSimpleTable file in app/Petrol/Fillers/.
 
-Open it up.  
+Open it up.
 ```php
 namespace App\Petrol\Fillers;
 
@@ -316,7 +316,7 @@ class FillSimpleTable extends Filler
         // return array
     }
 }
-```  
+```
 
 Enter the database columns in the $columns array. (We don't need the id column.)
 ```php
@@ -325,7 +325,7 @@ Enter the database columns in the $columns array. (We don't need the id column.)
         'email',
         'address'
     ];
-```  
+```
 
 Enter your line parsing code in the parse method.
 ```php
@@ -333,37 +333,37 @@ Enter your line parsing code in the parse method.
     {
         return array_combine($this->columns, $this->cleanExplode('/', $line));
     }
-```  
+```
 
 Fill your table.
 ```cmd
 php artisan petrol:fill simple_table
-```  
+```
 
-Done.  Reward yourself with a drink of your choice. 
+Done.  Reward yourself with a drink of your choice.
 (A more detailed version of this tutorial can be found [here](#simple-table).)
 
-## Installation     
+## Installation
 
-#### Requirements 
- * ###### PHP 5.5 or higher     
+#### Requirements
+ * ###### PHP 7.1 or higher
 Linux users can find PHP releases in their distribution repositories.
 For other operating systems, visit the [php installation guide](http://php.net/manual/en/install.php) for instructions.
 
- * ###### composer     
-Check the [composer documentation](https://getcomposer.org/doc/00-intro.md) for installation instructions.   
+ * ###### composer
+Check the [composer documentation](https://getcomposer.org/doc/00-intro.md) for installation instructions.
 
 
-#### Install     
+#### Install
 
-If requirements are met, you can install the package in two ways.  
+If requirements are met, you can install the package in two ways.
 
-###### Download     
-Download [here](https://github.com/zachleigh/petrol/releases), cd into the Petrol directory and run  
+###### Download
+Download [here](https://github.com/zachleigh/petrol/releases), cd into the Petrol directory and run
 
 ```cmd
 composer install
-```   
+```
 
 Finished.  How easy was that?
 
@@ -373,37 +373,37 @@ composer require zachleigh/petrol
 ```
 If you install through composer, the program will be in vendor/zachleigh/petrol
 
-#### A Little Setup  
-###### Executables    
-Once you have Petrol installed, you may want to make the 'petrol' file executable so it can be run without having to type php before the command.    
-Not executable:     
+#### A Little Setup
+###### Executables
+Once you have Petrol installed, you may want to make the 'petrol' file executable so it can be run without having to type php before the command.
+Not executable:
 ```cmd
 php petrol argument
 ```
-Executable:   
+Executable:
 ```cmd
 ./petrol argument
 ```
 
-###### Environment Setup      
+###### Environment Setup
 You will need to create a .env file and fill in the appropriate information.  You can do this manually by copying the .env.example file to .env or by using the built-in command line tool.
 ```cmd
 ./petrol make env
 ```
 
-###### Config File     
+###### Config File
 One more step, then you're ready to go.  Open up config.php and make sure that 'database' is set to the database of your choice.  Currently, only mysql is supported out of the box.
 
-## Examples    
-  * [Simple Table](#simple-table)    
-  * [XML Table](#xml-table)    
-  * [XML Table JSON Array](#xml-table-json-array)   
+## Examples
+  * [Simple Table](#simple-table)
+  * [XML Table](#xml-table)
+  * [XML Table JSON Array](#xml-table-json-array)
 
-#### Simple Table    
-Let's fill up a simple database.  
+#### Simple Table
+Let's fill up a simple database.
 
-For this brief tutorial, we will be filling the **simple_table** Mysql database table with info from the **simple.txt** file.    
-**simple.txt**      
+For this brief tutorial, we will be filling the **simple_table** Mysql database table with info from the **simple.txt** file.
+**simple.txt**
 ```xml
 Bob Smith / bob@example.com / 3974 South Belvie St.
 Jean Samson / jean@example.com / 456 North Main
@@ -413,7 +413,7 @@ Betty Lou Victors / betty@example.com / 987 North Colorado Bvd.
 ```
 We have slash seperated names, email addresses, and physical addresses that need to get into our database.
 
-##### Step 1   
+##### Step 1
 Before we do anything else, we need to put our data file, **simple.txt**, in Petrol/src/Files/.
 
 ##### Step 2
@@ -422,7 +422,7 @@ Once our file is where it needs to be, we can make a new Filler with the 'new' c
 ./petrol new simple_table --file=simple.txt
 ```
 
-The Filler will be in Petrol/src/Fillers/ and will be called **FillCamelCasedTableName**, in our case **FillSimpleTable**.    It will look something like this.    
+The Filler will be in Petrol/src/Fillers/ and will be called **FillCamelCasedTableName**, in our case **FillSimpleTable**.    It will look something like this.
 ```php
 namespace Petrol\Fillers;
 
@@ -534,10 +534,10 @@ We now need to set our database columns in the protected $columns array.  Our sa
 Note that the column names need to match the columns in the mysql table exactly, excluding an auto-incrementing id column.  In this case, our mysql table looks like this:
 
 | id       | name     | email    | address  |
-|:--------:|:--------:|:--------:|:--------:| 
+|:--------:|:--------:|:--------:|:--------:|
 
 ##### Step 4
-Ok, let's write our parsing logic.   
+Ok, let's write our parsing logic.
 Petrol will iterate over $file line-by-line and for each line, it will run the protected method parse().  In parse, we have access to $line, one individual line from the file. We can write our line parsing logic there.  The parse() method must return an array representing one row of the database.  In other words, we must return a $key => $value pair array where each $key equals a column name (defined in $columns) and its $value equals the value we wish to assign to that column.  In our example, we want to seperate the name, email, and address fields in the file and then assign them to name, email, and address keys in the returned array.
 ```php
     protected function parse($line)
@@ -582,7 +582,7 @@ Array
 Notice that the keys in each array equal the $column variable items.  This is a must.  You've been warned.
 
 ##### Step 5
-We're almost done. After saving the Filler file, we simply run the fill command.  The command requires one argument, the database table name.  In our case this is **simple_table**.  
+We're almost done. After saving the Filler file, we simply run the fill command.  The command requires one argument, the database table name.  In our case this is **simple_table**.
 ```cmd
 ./petrol fill simple_table
 ```
@@ -593,7 +593,7 @@ If you're getting errors, you can use the **--errors** flag to dump any Mysql PD
 
 #### XML Table
 
-In this short tutorial, we'll be filling a table using an XML file.  We will be using the **books.xml** file and filling the **books** table in our database.  
+In this short tutorial, we'll be filling a table using an XML file.  We will be using the **books.xml** file and filling the **books** table in our database.
 **books.xml**
 ```xml
 <?xml version="1.0"?>
@@ -604,7 +604,7 @@ In this short tutorial, we'll be filling a table using an XML file.  We will be 
       <genre>Computer</genre>
       <price>44.95</price>
       <publish_date>2000-10-01</publish_date>
-      <description>An in-depth look at creating applications 
+      <description>An in-depth look at creating applications
       with XML.</description>
    </book>
    <book id="bk102">
@@ -613,8 +613,8 @@ In this short tutorial, we'll be filling a table using an XML file.  We will be 
       <genre>Fantasy</genre>
       <price>5.95</price>
       <publish_date>2000-12-16</publish_date>
-      <description>A former architect battles corporate zombies, 
-      an evil sorceress, and her own childhood to become queen 
+      <description>A former architect battles corporate zombies,
+      an evil sorceress, and her own childhood to become queen
       of the world.</description>
    </book>
    <book id="bk103">
@@ -623,8 +623,8 @@ In this short tutorial, we'll be filling a table using an XML file.  We will be 
       <genre>Fantasy</genre>
       <price>5.95</price>
       <publish_date>2000-11-17</publish_date>
-      <description>After the collapse of a nanotechnology 
-      society in England, the young survivors lay the 
+      <description>After the collapse of a nanotechnology
+      society in England, the young survivors lay the
       foundation for a new society.</description>
    </book>
    <book id="bk104">
@@ -633,9 +633,9 @@ In this short tutorial, we'll be filling a table using an XML file.  We will be 
       <genre>Fantasy</genre>
       <price>5.95</price>
       <publish_date>2001-03-10</publish_date>
-      <description>In post-apocalypse England, the mysterious 
-      agent known only as Oberon helps to create a new life 
-      for the inhabitants of London. Sequel to Maeve 
+      <description>In post-apocalypse England, the mysterious
+      agent known only as Oberon helps to create a new life
+      for the inhabitants of London. Sequel to Maeve
       Ascendant.</description>
    </book>
    <book id="bk105">
@@ -644,8 +644,8 @@ In this short tutorial, we'll be filling a table using an XML file.  We will be 
       <genre>Fantasy</genre>
       <price>5.95</price>
       <publish_date>2001-09-10</publish_date>
-      <description>The two daughters of Maeve, half-sisters, 
-      battle one another for control of England. Sequel to 
+      <description>The two daughters of Maeve, half-sisters,
+      battle one another for control of England. Sequel to
       Oberon's Legacy.</description>
    </book>
    <book id="bk106">
@@ -654,7 +654,7 @@ In this short tutorial, we'll be filling a table using an XML file.  We will be 
       <genre>Romance</genre>
       <price>4.95</price>
       <publish_date>2000-09-02</publish_date>
-      <description>When Carla meets Paul at an ornithology 
+      <description>When Carla meets Paul at an ornithology
       conference, tempers fly as feathers get ruffled.</description>
    </book>
    <book id="bk107">
@@ -663,7 +663,7 @@ In this short tutorial, we'll be filling a table using an XML file.  We will be 
       <genre>Romance</genre>
       <price>4.95</price>
       <publish_date>2000-11-02</publish_date>
-      <description>A deep sea diver finds true love twenty 
+      <description>A deep sea diver finds true love twenty
       thousand leagues beneath the sea.</description>
    </book>
    <book id="bk108">
@@ -682,7 +682,7 @@ In this short tutorial, we'll be filling a table using an XML file.  We will be 
       <price>6.95</price>
       <publish_date>2000-11-02</publish_date>
       <description>After an inadvertant trip through a Heisenberg
-      Uncertainty Device, James Salway discovers the problems 
+      Uncertainty Device, James Salway discovers the problems
       of being quantum.</description>
    </book>
    <book id="bk110">
@@ -691,7 +691,7 @@ In this short tutorial, we'll be filling a table using an XML file.  We will be 
       <genre>Computer</genre>
       <price>36.95</price>
       <publish_date>2000-12-09</publish_date>
-      <description>Microsoft's .NET initiative is explored in 
+      <description>Microsoft's .NET initiative is explored in
       detail in this deep programmer's reference.</description>
    </book>
    <book id="bk111">
@@ -700,8 +700,8 @@ In this short tutorial, we'll be filling a table using an XML file.  We will be 
       <genre>Computer</genre>
       <price>36.95</price>
       <publish_date>2000-12-01</publish_date>
-      <description>The Microsoft MSXML3 parser is covered in 
-      detail, with attention to XML DOM interfaces, XSLT processing, 
+      <description>The Microsoft MSXML3 parser is covered in
+      detail, with attention to XML DOM interfaces, XSLT processing,
       SAX and more.</description>
    </book>
    <book id="bk112">
@@ -711,29 +711,29 @@ In this short tutorial, we'll be filling a table using an XML file.  We will be 
       <price>49.95</price>
       <publish_date>2001-04-16</publish_date>
       <description>Microsoft Visual Studio 7 is explored in depth,
-      looking at how Visual Basic, Visual C++, C#, and ASP+ are 
-      integrated into a comprehensive development 
+      looking at how Visual Basic, Visual C++, C#, and ASP+ are
+      integrated into a comprehensive development
       environment.</description>
    </book>
 </catalog>
 ```
 
-We have 12 books, each with an id stored as an attribute on the book tag, an author, a title, a genre, a price, a publish date, and a description.  In this tutorial, we will be filling a table that has one column for each field.  Our database will look like this:  
+We have 12 books, each with an id stored as an attribute on the book tag, an author, a title, a genre, a price, a publish date, and a description.  In this tutorial, we will be filling a table that has one column for each field.  Our database will look like this:
 
 | id       | book-id  | author   | title    | genre    | price    | publish-date  | description |
-|:--------:|:--------:|:--------:|:--------:|:--------:|:--------:|:-------------:|:-----------:|   
+|:--------:|:--------:|:--------:|:--------:|:--------:|:--------:|:-------------:|:-----------:|
 
-##### Step 1  
-Move **books.xml** into Petrol/src/Files.   
+##### Step 1
+Move **books.xml** into Petrol/src/Files.
 
-##### Step 2  
+##### Step 2
 Make an new Filler with the new command.
 ```cmd
 ./petrol new books --file=books.xml
 ```
 
-##### Step 3  
-In the newly created FillBooks file, enter the database columns in the $columns array.  
+##### Step 3
+In the newly created FillBooks file, enter the database columns in the $columns array.
 ```php
     protected $columns = [
         'book-id',
@@ -782,9 +782,9 @@ Now we can use all the methods available in XmlParser to help us.
     }
 ```
 
-Let's have a look at this.  First, when using the the XmlParser helpers, we need to set the root XMNL tag with setRootTag(). This identifies when the XML to be read actually starts and makes parsing easier. Because we want to get an attribute (book_id) as well, we are going to have to do a two step parse.  First, we will convert each book tree into an array with xmlToArrays().  This method requires $line and the root tag of the tree you want to convert to an array, in our case 'book.'  This will return null unless the closing book tag has been reached, in which case it will return an array. Because the xmlToArrays method returns null unless the closing tag has been reached, we need to check for null before proceeding. 
+Let's have a look at this.  First, when using the the XmlParser helpers, we need to set the root XMNL tag with setRootTag(). This identifies when the XML to be read actually starts and makes parsing easier. Because we want to get an attribute (book_id) as well, we are going to have to do a two step parse.  First, we will convert each book tree into an array with xmlToArrays().  This method requires $line and the root tag of the tree you want to convert to an array, in our case 'book.'  This will return null unless the closing book tag has been reached, in which case it will return an array. Because the xmlToArrays method returns null unless the closing tag has been reached, we need to check for null before proceeding.
 
-Once we get our array, we can get the 'book_id' attribute off the array with the getAttributeFromArray method.  (Note that this method is still in development and needs to be tested more.) Once we have the attribute, we can convert our array to a data array with arrayToData, which requires the array we generated before as well as $columns.  This method will return a $key => $value pair array where $key is a column name and $value is a value from the XML file.  
+Once we get our array, we can get the 'book_id' attribute off the array with the getAttributeFromArray method.  (Note that this method is still in development and needs to be tested more.) Once we have the attribute, we can convert our array to a data array with arrayToData, which requires the array we generated before as well as $columns.  This method will return a $key => $value pair array where $key is a column name and $value is a value from the XML file.
 
 We then simply place 'book_id' on the returned data array and manually insert the row with $this->connection->insertRow.
 
@@ -807,17 +807,17 @@ All we have to do now is fill our table.
 ```cmd
 ./petrol fill books
 ```
-Finished.  
+Finished.
 
 #### XML Table JSON Array
 
-In some situations, it is better to enter the XML data into a database as a JSON array.  This isn't always desired because it makes searching the database more difficult and requires decoding of the returned values, but for some situations, this is a good way to go about handling XML data.  
+In some situations, it is better to enter the XML data into a database as a JSON array.  This isn't always desired because it makes searching the database more difficult and requires decoding of the returned values, but for some situations, this is a good way to go about handling XML data.
 
-This very brief tutorial is similar to the previous tutorial, except our database table and our parsing function will be different.  
-Our database structure:  
+This very brief tutorial is similar to the previous tutorial, except our database table and our parsing function will be different.
+Our database structure:
 
-| id       | book_id  | info     | 
-|:--------:|:--------:|:--------:|  
+| id       | book_id  | info     |
+|:--------:|:--------:|:--------:|
 
 So in our Filler file, our columns array will look like this:
 ```php
@@ -846,14 +846,14 @@ Our parsing function will look like this:
 ```
 Rather than convert the array returned from xmlToArrays into an array that can be fed to our Mysql statement, we will instead json encode it.  When you get the database value on the other end, you can simply use json_decode to get back the original structure of the array.  Its not for every situation, but in some cases its the best solution.
 
-## Command Library    
-  * [fill](#fill)    
-  * [make](#make)  
-  * [new](#new)     
+## Command Library
+  * [fill](#fill)
+  * [make](#make)
+  * [new](#new)
 
-### fill  
+### fill
 
-Fill a database table using the Filler made with the **new** command.  table_name needs to match name of database table used when creating the Filler.  
+Fill a database table using the Filler made with the **new** command.  table_name needs to match name of database table used when creating the Filler.
 ```cmd
 ./petrol fill table_name [--options]
 ```
@@ -864,8 +864,8 @@ Dump Mysql PDO errors
 ./petrol fill table_name --errors
 ```
 
-###### quiet  
-Quiet all user input prompts.  
+###### quiet
+Quiet all user input prompts.
 ```cmd
 ./petrol fille table_name --quiet
 ```
@@ -882,7 +882,7 @@ Make a .env file with database credentials
 ./petrol make env
 ```
 
-### new     
+### new
 Make a new Filler to parse a file and fill a database table.  table_name needs to match the database table name.
 ```cmd
 ./petrol new table_name [--options]
