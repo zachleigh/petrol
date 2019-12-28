@@ -2,10 +2,10 @@
 
 namespace Petrol\Core\Commands\NewCommand;
 
+use Petrol\Core\Helpers\Traits\Helpers;
+use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Filesystem\Filesystem;
-use Petrol\Core\Helpers\Traits\Helpers;
 
 class NewHandler
 {

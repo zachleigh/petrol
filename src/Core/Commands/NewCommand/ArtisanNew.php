@@ -4,14 +4,14 @@ namespace Petrol\Core\Commands\NewCommand;
 
 use Illuminate\Console\Command;
 use Petrol\Core\Commands\NewCommand\NewData;
-use Symfony\Component\Console\Input\ArgvInput;
-use Symfony\Component\Console\Output\ConsoleOutput;
 use Symfony\Component\Filesystem\Filesystem;
-use Illuminate\Console\AppNamespaceDetectorTrait;
+use Symfony\Component\Console\Input\ArgvInput;
+use Illuminate\Console\DetectsApplicationNamespace;
+use Symfony\Component\Console\Output\ConsoleOutput;
 
 class ArtisanNew extends Command
 {
-    use AppNamespaceDetectorTrait;
+    use DetectsApplicationNamespace;
 
     /**
      * The name and signature of the console command.
@@ -58,7 +58,7 @@ class ArtisanNew extends Command
         $petrol_path = getcwd().'/vendor/zachleigh/petrol/';
 
         $data = new NewData($name, $filler_path, $file, $namespace, $petrol_path);
-        
+
         $handler = new NewHandler(new ArgvInput(), new ConsoleOutput(), $this->filesystem);
 
         $handler->handle($data);

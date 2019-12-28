@@ -5,8 +5,8 @@ namespace Petrol\Core\Commands\FillCommand;
 use Dotenv\Dotenv;
 use Petrol\Core\Commands\MakeCommand\MakeEnv;
 use Petrol\Core\Database\Build\ConnectionFactory;
-use Symfony\Component\Console\Helper\QuestionHelper;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Helper\QuestionHelper;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Question\ConfirmationQuestion;
 

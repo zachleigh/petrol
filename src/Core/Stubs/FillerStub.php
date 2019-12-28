@@ -4,9 +4,8 @@ namespace DummyNamespace;
 
 use Petrol\Core\Contracts\Filler;
 use Petrol\Core\Database\Connection;
-use Petrol\Core\Helpers\Traits\Parser;
 use Petrol\Core\Helpers\Traits\User;
-use Petrol\Core\Helpers\Traits\XmlParser;
+use Petrol\Core\Helpers\Traits\Parser;
 
 class DummyClass extends Filler
 {
@@ -64,7 +63,7 @@ class DummyClass extends Filler
     /**
      * PDO statements to be created on object. Statements will be stored on the
      * object and can be accessed with $this->key.
-     * 
+     *
      * @var array
      */
     protected $statements = [
@@ -79,7 +78,7 @@ class DummyClass extends Filler
     public function __construct(Connection $connection)
     {
         $this->connection = $connection;
-        
+
         parent::__construct();
     }
 

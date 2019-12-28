@@ -76,9 +76,9 @@ class Connection
 
     /**
      * Prepare a statement on handle (the PDO object).
-     * 
-     * @param  string $statement 
-     * 
+     *
+     * @param  string $statement
+     *
      * @return PDOStatement
      */
     public function prepareStatement($statement)

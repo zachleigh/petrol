@@ -2,16 +2,15 @@
 
 namespace Petrol\Core\Commands\FillCommand;
 
-use App\User;
 use Illuminate\Console\Command;
-use Symfony\Component\Console\Input\ArgvInput;
-use Symfony\Component\Console\Output\ConsoleOutput;
-use Illuminate\Console\AppNamespaceDetectorTrait;
 use Petrol\Core\Helpers\Traits\Helpers;
+use Symfony\Component\Console\Input\ArgvInput;
+use Illuminate\Console\DetectsApplicationNamespace;
+use Symfony\Component\Console\Output\ConsoleOutput;
 
 class ArtisanFill extends Command
 {
-    use AppNamespaceDetectorTrait, Helpers;
+    use DetectsApplicationNamespace, Helpers;
 
     /**
      * The name and signature of the console command.

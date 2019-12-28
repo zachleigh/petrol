@@ -6,7 +6,7 @@ class MakeData
 {
     /**
      * The item to make.
-     * 
+     *
      * @var string
      */
     public $item;
@@ -27,7 +27,7 @@ class MakeData
 
     /**
      * Construct.
-     * 
+     *
      * @param string $item
      */
     public function __construct($item, $namespace, $petrol_path)

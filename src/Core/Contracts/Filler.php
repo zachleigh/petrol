@@ -2,8 +2,6 @@
 
 namespace Petrol\Core\Contracts;
 
-use Petrol\Core\Database\Connection;
-
 abstract class Filler
 {
     private $file_handle;
@@ -161,8 +159,8 @@ abstract class Filler
 
     /**
      * Throw exception if file does not exists
-     * 
-     * @param  string $file 
+     *
+     * @param  string $file
      */
     private function validateFileExists($file)
     {

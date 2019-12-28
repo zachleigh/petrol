@@ -255,8 +255,8 @@ trait XmlParser
 
     /**
      * Converts entity &ent; to string ent.
-     * 
-     * @param  string $entity 
+     *
+     * @param  string $entity
      * @return string
      */
     private function entityToString($entity)

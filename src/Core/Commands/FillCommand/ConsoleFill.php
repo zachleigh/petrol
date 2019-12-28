@@ -2,13 +2,13 @@
 
 namespace Petrol\Core\Commands\FillCommand;
 
+use Petrol\Core\Helpers\Traits\Helpers;
+use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Filesystem\Filesystem;
-use Petrol\Core\Helpers\Traits\Helpers;
 
 class ConsoleFill extends Command
 {

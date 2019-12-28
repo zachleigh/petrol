@@ -13,7 +13,7 @@ class NewData
 
     /**
      * Full path to filler folder.
-     * 
+     *
      * @var string
      */
     public $filler_path;
