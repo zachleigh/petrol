@@ -2,11 +2,12 @@
 
 <?php
 
-use Petrol\Core\Commands\FillCommand\ConsoleFill;
-use Petrol\Core\Commands\MakeCommand\ConsoleMake;
-use Petrol\Core\Commands\NewCommand\ConsoleNew;
+use Dotenv\Dotenv;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Filesystem\Filesystem;
+use Petrol\Core\Commands\NewCommand\ConsoleNew;
+use Petrol\Core\Commands\FillCommand\ConsoleFill;
+use Petrol\Core\Commands\MakeCommand\ConsoleMake;
 
 if (file_exists('vendor/autoload.php')) {
     require 'vendor/autoload.php';
@@ -18,7 +19,7 @@ if (file_exists('vendor/autoload.php')) {
 }
 
 if (file_exists('.env')) {
-    Dotenv::load(__DIR__);
+    (new Dotenv(__DIR__))->load();
 }
 
 $filesystem = new Filesystem();
