@@ -19,7 +19,7 @@ if (file_exists('vendor/autoload.php')) {
 }
 
 if (file_exists('.env')) {
-    (new Dotenv(__DIR__))->load();
+    (Dotenv::create(__DIR__))->load();
 }
 
 $filesystem = new Filesystem();

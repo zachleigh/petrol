@@ -2,6 +2,8 @@
 
 namespace Petrol\tests;
 
+use Dotenv\Dotenv;
+
 class DatabaseTestCase extends \PHPUnit_Extensions_Database_TestCase
 {
     private static $pdo = null;
@@ -14,8 +16,7 @@ class DatabaseTestCase extends \PHPUnit_Extensions_Database_TestCase
     public function __construct()
     {
         if (file_exists('.env')) {
-            // \Dotenv::load(getcwd());
-            $dotenv = new \Dotenv\Dotenv(getcwd());
+            $dotenv = Dotenv::create(getcwd());
             $dotenv->load();
         }
 

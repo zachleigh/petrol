@@ -16,7 +16,7 @@
     "require": {
         "symfony/console": "4.*",
         "symfony/filesystem": "~2.0",
-        "vlucas/phpdotenv": "2.*"
+        "vlucas/phpdotenv": "3.*"
     },
 
     "require-dev": {
